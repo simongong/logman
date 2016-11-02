@@ -2,20 +2,22 @@
   "name": "logman",
   "version": "1.0.0",
   "repository": "https://github.com/simongong/logman",
-  "description": "A man who is in charge of your log files",
+  "description": "A web app to monitor your log files based on Socket.io",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint lib config.js app.js"
+    "lint": "eslint lib config.js app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Log",
     "Monitor",
-    "Node"
+    "Node",
+    "Socket.io",
+    "SSH"
   ],
   "author": "simongong <simon.gong64@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "co-views": "^2.1.0",
     "koa": "^1.2.4",
