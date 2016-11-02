@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>日志监控</title>
+  </head>
+  <body style="margin:0; padding: 0;">
+    <div id="container" style="color: #aec7e8; position: relative; background-color: #222;"></div>
+    <script src="./js/react.js"></script>
+    <script src="./js/react-dom.js"></script>
+    <script src="./js/babel-browser-5.3.8.min.js"></script>
+    <script src="./js/socket.io-1.4.5.js"></script>
+
+    <script type="text/javascript">
+      // 模板数据，打到页面的全局变量上
+      var servers = "{{socketServers}}";
+      var data = {
+        domain: "{{domain}}",
+        servers: servers.split(',').filter(ele => !!ele.trim()),
+        port: {{socketPort}},
+        ready: {{socketReady}},
+        log: "{{log}}"
+      };
+    </script>
+    <script type="text/babel" src="./js/index.js"></script>
+  </body>
+</html>

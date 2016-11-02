@@ -1,0 +1,33 @@
+{
+  "name": "logman",
+  "version": "1.0.0",
+  "repository": "https://github.com/simongong/logman",
+  "description": "A man who is in charge of your log files",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint lib config.js app.js"
+  },
+  "keywords": [
+    "Log",
+    "Monitor",
+    "Node"
+  ],
+  "author": "simongong <simon.gong64@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "co-views": "^2.1.0",
+    "koa": "^1.2.4",
+    "koa-bodyparser": "^2.2.0",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
+    "socket.io": "^1.5.1",
+    "ssh2": "^0.5.2",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "nodemon": "^1.11.0"
+  }
+}
