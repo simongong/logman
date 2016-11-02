@@ -12,12 +12,11 @@ const SshClient = require('./lib/sshClient');
 const App = Koa();
 App.use(BodyParser());
 
-// 定义渲染方法
+// render function
 const render = Views(__dirname + '/views', { map: { html: 'swig' }});
 
-// 定义路由
+// routers
 Router.get('/', function *() {
-  // 检查socket.io服务端是否启动，渲染页面
   let data = {
     domain: Configs.domain,
     socketServers: Configs.servers,
@@ -31,13 +30,12 @@ Router.get('/', function *() {
 
   this.body = yield render('index.html', data);
 }).post('/start', function *() {
-  let data = { success: false, error: 'ssh登录失败' };
+  let data = { success: false, error: 'ssh login failed' };
 
   try {
     let combo = JSON.parse(this.request.body.combo);
     if (combo.name && combo.password) {
-      // 启动socket.io服务端
-      data.success = yield SshClient.conn(combo);
+      data.success = yield SshClient.conn(combo); // start ssh connection
       if (data.success) {
         Cache.ready = true;
         Cache.log = Configs.logs[0];
@@ -45,7 +43,7 @@ Router.get('/', function *() {
         Cache.ready = false;
       }
     } else {
-      data.error = '必须输入用户名和密码';
+      data.error = 'username and password required!';
     }
   } catch (e) {
     data.error = e.message;
@@ -58,7 +56,7 @@ App.use(Router.routes())
   .use(Router.allowedMethods())
   .use(errorHandler());
 
-// 伺服静态文件
+// static resource serving
 App.use(Serve(__dirname + '/views'));
 
 App.on('error', function(err, ctx) {
@@ -71,7 +69,7 @@ function errorHandler() {
       yield next;
     } catch (err) {
       this.status = 500;
-      this.body = '服务器内部错误: ' + err.message;
+      this.body = 'Server Internal Error: ' + err.message;
       // can emit on app for log
       // this.app.emit('error', err, this);
     }
