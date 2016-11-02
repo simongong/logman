@@ -4,6 +4,10 @@ Logman is a web app to monitor your log files.
 
 If your web app is deployed on multiple distributed servers and you want a single entry point to inspect your log files all over the servers, logman will be a good choice.
 
+**Before(w/o logman)**: `ssh server1 && tail -F log | grep keyword`, `ssh server2 && tail -F log | grep keyword`, ...(repeated work on all servers and switch between shells back and forth)
+
+**With Logman**: Just open `http://logman.domain.com`, that's it.
+
 Built on [Socket.io](http://socket.io/) and [React](https://facebook.github.io/react/).
 
 ## Features
